@@ -45,7 +45,7 @@ This bot is designed to assist with the creation, management, and execution of r
 
 1. Run the bot:
    ```
-   python main.py
+   python run.py
    ```
 2. Start interacting with the bot on Telegram.
 
