@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+</head>
+<body>
+    <button id="addCookie">Добавить куку</button>
+    <button id="checkCookie">Проверить куку</button>
+
+    <script>
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+          }
+
+        document.getElementById('addCookie').onclick = function() {
+            setCookie('_ym_uid', '123', 365);
+            alert('Cookie установлено');
+        }
+
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        document.getElementById('checkCookie').onclick = function() {
+            let ymUid = getCookie('_ym_uid');
+            alert(`Значение _ym_uid: ${ymUid}`);
+            console.log(ymUid);
+        }
+    </script>
+</body>
+</html>
